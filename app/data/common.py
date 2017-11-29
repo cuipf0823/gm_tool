@@ -34,8 +34,7 @@ class Interact:
     """
     # message sequence number
     msg_seq = 0
-    # user session
-    session = 0
+
     # user ID assigned by gm server(maybe not user)
     gid = 0
 
@@ -51,14 +50,14 @@ class Interact:
         return cls.msg_seq
 
     @classmethod
-    def make_header(cls, msg_name):
+    def make_header(cls, msg_name, session):
         """
         makeup message header
         """
         header = pb_basic.CSMessageHeader()
         header.msg_name = msg_name.encode('utf-8')
         header.seq_num = cls.seq_num()
-        header.gateway_session = cls.session
+        header.gateway_session = session
         return header
 
     @staticmethod

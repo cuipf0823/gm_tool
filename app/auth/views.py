@@ -22,6 +22,7 @@ def login():
             if status_code is 0:
                 UserManager.append(ret)
                 login_user(ret)
+                UserManager.print_users()
                 return redirect(request.args.get('next') or url_for('main.index'))
             else:
                 flash('login gm server failed {0}:{1}'.format(status_code, ret), 'error')
@@ -35,6 +36,7 @@ def logout():
     current_user.connect_gm.close()
     UserManager.remove(current_user.id)
     logout_user()
+    UserManager.print_users()
     flash('You have been logged out!')
     return redirect(url_for('auth.login'))
 

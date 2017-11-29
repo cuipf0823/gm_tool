@@ -12,7 +12,7 @@ from .forms import DelMailForm, RoomInfoForm
 import logging
 import datetime
 
-DEFAULT_MAIL_SENDER = '纸盒人星球官方'
+DEFAULT_MAIL_SENDER = '创意空间官方'
 
 
 def init_time(days=15):

@@ -30,7 +30,7 @@ class DelMailForm(FlaskForm):
 
 class RoomInfoForm(FlaskForm):
     server_id = SelectField('Server id:', coerce=int)
-    room_id = StringField('Room id：', validators=[Regexp('^[0-9]*$', 0, 'room id must have only numbers.')])
+    room_id = StringField('Room id：', validators=[DataRequired(), Regexp('^[0-9]*$', 0, 'room id must have only numbers.')])
     submit = SubmitField('Submit')
 
     def __init__(self, *args, **kwargs):
@@ -106,4 +106,3 @@ class MailForm(FlaskForm):
                 logging.debug('validate mail attachments {}'.format(attachments))
             except BaseException:
                 raise ValidationError('mail attachment format error')
-

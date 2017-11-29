@@ -33,119 +33,119 @@ def handle_response(tcp_connect, header, req):
 
 
 # 无需参数
-def list_server():
+def list_server(user):
     req = gm_pb2.GMGetAllServerListReq()
-    header = Interact.make_header(req.DESCRIPTOR.full_name)
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
     return header, req
 
 
-def register_num():
+def register_num(user):
     req = gm_pb2.GMGetServerRegisterNumberReq()
-    header = Interact.make_header(req.DESCRIPTOR.full_name)
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
     return header, req
 
 
-def online_status():
+def online_status(user):
     req = gm_pb2.GMGetOnlineInSwitchReq()
-    header = Interact.make_header(req.DESCRIPTOR.full_name)
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
     return header, req
 
 
-def tunnel():
+def tunnel(user):
     req = gm_pb2.GMGetTunnelServerInfoReq()
-    header = Interact.make_header(req.DESCRIPTOR.full_name)
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
     return header, req
 
 
 # 需要uid， channel
-def query_player(uid, channel=0):
+def query_player(user, uid, channel=0):
     req = gm_pb2.GMQueryUserReq()
-    header = Interact.make_header(req.DESCRIPTOR.full_name)
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
     req.players.uid = uid
     req.players.channel = channel
     return header, req
 
 
-def query_online(uid, channel=0):
+def query_online(user, uid, channel=0):
     req = gm_pb2.GMQueryUserOnlineReq()
-    header = Interact.make_header(req.DESCRIPTOR.full_name)
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
     info = req.players.add()
     info.uid = uid
     info.channel = channel
     return header, req
 
 
-def kick_player(uid, channel=0):
+def kick_player(user, uid, channel=0):
     req = gm_pb2.GMKickUserReq()
-    header = Interact.make_header(req.DESCRIPTOR.full_name)
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
     req.uid = uid
     req.channel = channel
     return header, req
 
 
-def player_detail(uid, channel=0):
+def player_detail(user, uid, channel=0):
     req = gm_pb2.GMQueryOnlineUserInfoReq()
-    header = Interact.make_header(req.DESCRIPTOR.full_name)
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
     req.uid = uid
     req.channel = channel
     return header, req
 
 
-def craft_info(uid, channel=0):
+def craft_info(user, uid, channel=0):
     req = gm_pb2.GMGetPlayerCraftInfoReq()
-    header = Interact.make_header(req.DESCRIPTOR.full_name)
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
     req.uid = uid
     req.channel = channel
     return header, req
 
 
-def friend_list(uid, channel=0):
+def friend_list(user, uid, channel=0):
     req = gm_pb2.GMGetFriendListReq()
-    header = Interact.make_header(req.DESCRIPTOR.full_name)
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
     req.uid = uid
     req.channel = channel
     return header, req
 
 
-def black_list(uid, channel=0):
+def black_list(user, uid, channel=0):
     req = gm_pb2.GMGetBlackListReq()
-    header = Interact.make_header(req.DESCRIPTOR.full_name)
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
     req.uid = uid
     req.channel = channel
     return header, req
 
 
-def push_list(uid, channel=0):
+def push_list(user, uid, channel=0):
     req = gm_pb2.GMGetPushListReq()
-    header = Interact.make_header(req.DESCRIPTOR.full_name)
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
     req.uid = uid
     req.channel = channel
     return header, req
 
 
-def query_user_info(server_id):
+def query_user_info(user, server_id):
     req = gm_pb2.GMQueryAllUserBaseInfoOnlineReq()
-    header = Interact.make_header(req.DESCRIPTOR.full_name)
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
     req.server_id = server_id
     return header, req
 
 
-def all_room(server_id):
+def all_room(user, server_id):
     req = gm_pb2.GMGetAllServerRoomReq()
-    header = Interact.make_header(req.DESCRIPTOR.full_name)
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
     req.server_id = server_id
     return header, req
 
 
-def room_info(server_id, room_id):
+def room_info(user, server_id, room_id):
     req = gm_pb2.GMGetRoomInfoReq()
-    header = Interact.make_header(req.DESCRIPTOR.full_name)
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
     req.server_id = server_id
     req.room_id = room_id
     return header, req
 
 
-def send_mail(mail_info):
+def send_mail(user, mail_info):
     logging.debug('send mail to gm server mail info: {}'.format(mail_info))
     '''
     status = True
@@ -153,7 +153,7 @@ def send_mail(mail_info):
         return
     '''
     req = gm_pb2.GMSendMailReq()
-    header = Interact.make_header(req.DESCRIPTOR.full_name)
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
     mail = req.mail_content
     mail.gm_uid = Interact.gid
     mail.addressee_type = mail_info.get('receive_type')
@@ -184,15 +184,15 @@ def send_mail(mail_info):
     return header, req
 
 
-def unsend_mail():
+def unsend_mail(user):
     req = gm_pb2.GMQueryUnsendMailReq()
-    header = Interact.make_header(req.DESCRIPTOR.full_name)
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
     return header, req
 
 
-def del_unsend_mail(mail_id):
+def del_unsend_mail(user, mail_id):
     req = gm_pb2.GMDeleteUnsendMailReq()
-    header = Interact.make_header(req.DESCRIPTOR.full_name)
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
     req.mail_ids.append(mail_id)
     return header, req
 
@@ -297,7 +297,7 @@ class Operations:
         opt_info = cls.operations_desc.get(opt, None)
         if opt_info is None:
             return None
-        header, req = opt_info[1](**kwargs)
+        header, req = opt_info[1](user, **kwargs)
         return handle_response(user.connect_gm, header, req)
 
     @classmethod

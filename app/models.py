@@ -83,7 +83,7 @@ class User(UserMixin):
         return False
 
     def __str__(self):
-        return '(user_id: {0.__id}, user_name: {0.__username}, gateway_session: {0.__gateway_session})'.format(self)
+        return '(user_id: {0.id}, user_name: {0.username}, gateway_session: {0.gateway_session})'.format(self)
 
 
 class UserManager:
@@ -110,7 +110,7 @@ class UserManager:
     @classmethod
     def print_users(cls):
         for key, value in cls.users.items():
-            logging.debug(value)
+            logging.debug('key: {0} value: {1}'.format(key, value))
 
     @classmethod
     def get_user_by_name(cls, name):
@@ -184,12 +184,3 @@ def load_user(user_id):
     """
     logging.debug('user {} login successful'.format(user_id))
     return UserManager.get_user_by_id(int(user_id))
-
-
-
-
-
-
-
-
-

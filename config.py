@@ -19,7 +19,7 @@ class Config:
 
 
 class DevelopmentConfig(Config):
-    DEBUG = False
+    DEBUG = True
     GM_SERVER_IP = os.environ.get('GM_SERVER_DEV_IP')
     GM_SERVER_PORT = int(os.environ.get('GM_SERVER_DEV_PORT'))
 
@@ -35,4 +35,3 @@ config = {
     'testing': TestConfig,
     'default': DevelopmentConfig
 }
-

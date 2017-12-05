@@ -72,7 +72,7 @@ class TcpConnection(object):
             try:
                 ret = self.__sock.send(data[ret:])
             except socket.error as err:
-                logging.error('socket send data faild error:'.format(err))
+                logging.error('socket send data faild error: {}'.format(err))
                 return self.STATUS_ERR
             if ret >= data_len:
                 break
@@ -88,7 +88,7 @@ class TcpConnection(object):
             try:
                 rec_data = self.__sock.recv(MAX_RECEIVE_BUF)
             except socket.error as err:
-                logging.error('socket recv error: '.format(err))
+                logging.error('socket recv error:{}'.format(err))
                 return self.STATUS_ERR, err
             if len(rec_data) > 0:
                 all_data += rec_data

@@ -160,10 +160,10 @@ def send_mail(user, mail_info):
     if mail.addressee_type == 1:
         mail.online_ids = mail_info.get('receive_onlines', [])
     elif mail.addressee_type == 2:
+        mail.online_ids.append(mail_info.get("receive_online", 0))
         for uid in mail_info.get('receive_uids', []):
             mail.uids.append(uid)
             mail.channels.append(0)
-            mail.online_ids.append(mail_info.get("receive_online", 0))
     mail.sender = mail_info.get('sender').encode('utf-8')
     mail.title = mail_info.get('title').encode('utf-8')
     mail.content = mail_info.get('content').encode('utf-8')

@@ -9,6 +9,7 @@ from config import config
 from flask_wtf import CSRFProtect
 import sys
 import logging
+import os
 
 bootstrap = Bootstrap()
 moment = Moment()
@@ -36,7 +37,7 @@ def create_app(config_name):
         logging.basicConfig(level=logging.DEBUG, stream=sys.stdout,
                             format='%(asctime)s %(levelname)-8s %(message)s --%(filename)s:%(lineno)-4d')
     else:
-        logging.basicConfig(level=logging.DEBUG, filename='gm_tool.log',
+        logging.basicConfig(level=logging.DEBUG, filename='./log/gm_tool_{}.log'.format(os.getpid()),
                             format='%(asctime)s %(levelname)-8s %(message)s --%(filename)s:%(lineno)-4d')
 
     global gm_server_ip

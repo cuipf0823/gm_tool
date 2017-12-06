@@ -61,7 +61,7 @@ class MailReceiverForm(FlaskForm):
 
     def validate_receive_info(self, field):
         rec_type = self.receiver_type.data
-        if rec_type >= 1 and len(field.data) == 0:
+        if rec_type >= 1 and not field.data:
             raise ValidationError('receiver infomation format error.')
         if rec_type == 1:
             try:
@@ -99,7 +99,7 @@ class MailForm(FlaskForm):
     submit = SubmitField('Send')
 
     def validate_attach(self, field):
-        if len(field.data) != 0:
+        if field.data:
             try:
                 attachs = [item.split(':') for item in field.data.split(',')]
                 attachments = [(int(item[0]), int(item[1])) for item in attachs]

@@ -34,10 +34,7 @@ def handle_query_mail(form):
     mail_info.setdefault('content', form.content.data)
     mail_info.setdefault('valid_time', calc_second(form.valid_time.data))
     delayed_time = calc_second(form.delayed_time.data)
-    if delayed_time > 0:
-        mail_info.setdefault('delayed_time', delayed_time)
-    else:
-        mail_info.setdefault('delayed_time', 0)
+    mail_info.setdefault('delayed_time', delayed_time if delayed_time > 0 else 0)
     mail_info.setdefault('is_popping', form.is_popping.data)
     mail_info.setdefault('priority', form.priority.data)
     mail_info.setdefault('is_destory', form.is_destory.data)
@@ -62,7 +59,7 @@ def handle_query_mail(form):
 
 def query_param_none(opt):
     ret = query_callback(opt, current_user)
-    if ret.status_code == 0:
+    if not ret.status_code:
         # 更新内存数据
         query_response_cb(opt, ret.response)
     return render_template('index.html', operations=query_operators(), response=str(ret.response))
@@ -167,6 +164,6 @@ def index():
 @login_required
 def user(user_id):
     user_info = UserManager.get_user_by_id(int(user_id))
-    if user_info is None:
+    if not user_info:
         abort(404)
     return render_template('user.html', user=user_info)

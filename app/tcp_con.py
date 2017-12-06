@@ -53,7 +53,7 @@ class TcpConnection(object):
                     self.__ip, self.__port, err, count))
                 continue
             break
-        if self.__sock is None or count >= 3:
+        if not self.__sock or count >= 3:
             return False
         self.__sock.settimeout(4.0)
         logging.info('Connect GM Server successfully!')

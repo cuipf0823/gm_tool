@@ -49,4 +49,3 @@ class BaseCodec(object):
         msg_len = MSG_LEN_BYTES + header.ByteSize() + body.ByteSize()
         fmt = '=II%ds%ds' % (header.ByteSize(), body.ByteSize())
         return struct.pack(fmt, msg_len, header_len, header.SerializeToString(), body.SerializeToString())
-

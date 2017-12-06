@@ -29,31 +29,31 @@ def login_gm(tcp_connect, name, pwd):
     header = Interact.make_header(req.DESCRIPTOR.full_name, 0)
     req.name = name.encode('utf-8')
     ret_code = tcp_connect.send(Interact.encode(header, req))
-    if ret_code != 0:
+    if ret_code:
         logging.error('send msg {} to gm server faild !'.format(req.DESCRIPTOR.full_name))
         return StatusCode.status_and_desc(StatusCode.SOCK_SEND_ERROR)
     ret_code, data = tcp_connect.recv()
     user_info = {'name': name, 'pwd': pwd}
-    if ret_code != 0:
+    if ret_code:
         logging.error('receive gm server response message faild !')
         return StatusCode.status_and_desc(StatusCode.SOCK_RECEIVE_ERROR)
     header, body = Interact.decode(data)
-    if header.errcode != 0:
+    if header.errcode:
         logging.error('user {0} send {1} to gm server error {2}!'.format(name, req.DESCRIPTOR.full_name,
                                                                          header.errcode))
         return header.errcode, pb_error.GMErrorCode.Name(header.errcode)
     user_info.setdefault('gateway_session', header.gateway_session)
     logging.debug('user {0} check session successfully random bytes {1}'.format(name, body.random_bytes))
     ret_code = login_req(tcp_connect, name, pwd, body.random_bytes, header.gateway_session)
-    if ret_code != 0:
+    if ret_code:
         logging.error('send msg CSLoginReq to gm server faild !')
         return StatusCode.status_and_desc(StatusCode.SOCK_SEND_ERROR)
     ret_code, data = tcp_connect.recv()
-    if ret_code != 0:
+    if ret_code:
         logging.error('receive gm server response message faild !')
         return StatusCode.status_and_desc(StatusCode.SOCK_RECEIVE_ERROR)
     header, rsp = Interact.decode(data)
-    if header.errcode != 0:
+    if header.errcode:
         logging.error('user {0} send CSLoginReq to gm server error {1}!'.format(name, header.errcode))
         return header.errcode, pb_error.GMErrorCode.Name(header.errcode)
     Interact.gid = (rsp.gid if rsp.HasField('gid') else Interact.gid + 1)

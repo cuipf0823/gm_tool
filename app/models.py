@@ -151,7 +151,7 @@ def login_gm(name, pwd):
         return 10000, 'Connect gm server failed'
     status_code, ret = login.login_gm(tcp_connect, name, pwd)
     logging.info('user:{0} pwd: {1} login status_code: {2}, user_info: {3}'.format(name, pwd, status_code, ret))
-    if status_code == 0:
+    if not status_code:
         user = User(ret)
         user.connect_gm = tcp_connect
         return status_code, user

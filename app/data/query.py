@@ -10,24 +10,24 @@ import logging
 
 def handle_response(tcp_connect, header, req):
     status_code = tcp_connect.send(Interact.encode(header, req))
-    if status_code != 0:
+    if status_code:
         logging.error('send msg {} to gm server failed !'.format(req.DESCRIPTOR.full_name))
         return QueryRet(StatusCode.SOCK_SEND_ERROR, req, StatusCode.status_desc(StatusCode.SOCK_SEND_ERROR))
     logging.debug(header)
     logging.debug(req)
     status_code, data = tcp_connect.recv()
-    if status_code != 0:
+    if status_code:
         logging.error('receive gm server response message failed !')
         return QueryRet(StatusCode.SOCK_RECEIVE_ERROR, req, StatusCode.status_desc(StatusCode.SOCK_RECEIVE_ERROR))
     header, rsp = Interact.decode(data)
     logging.debug(header)
     logging.debug(rsp)
-    if header.errcode != 0:
+    if header.errcode:
         err_desc = 'send msg {0} to gm server error {1}:{2}!'.format(req.DESCRIPTOR.full_name, header.errcode,
                                                                      pb_error.GMErrorCode.Name(header.errcode))
         logging.error(err_desc)
         return QueryRet(header.errcode, req, err_desc)
-    if len(str(rsp)) == 0:
+    if not str(rsp):
         rsp = 'GM Server return empty!'
     return QueryRet(StatusCode.SUCCESS, req, rsp)
 
@@ -200,7 +200,7 @@ def del_unsend_mail(user, mail_id):
 #########################
 def handle_list_server(rsp):
     servers = []
-    if len(str(rsp)) != 0:
+    if str(rsp):
         for item in rsp.server_items:
             if item.server_type == 2:
                 servers.append(item.zone_id)
@@ -210,7 +210,7 @@ def handle_list_server(rsp):
 
 def handle_online_server(rsp):
     servers = []
-    if len(str(rsp)) != 0:
+    if  str(rsp):
         for item in rsp.servers:
             servers.append(item.server_id)
     logging.debug('handle_online_server update servers: {}'.format(servers))

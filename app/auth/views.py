@@ -19,7 +19,7 @@ def login():
             return redirect(request.args.get('next') or url_for('main.index'))
         else:
             status_code, ret = login_gm(form.username.data, form.password.data)
-            if status_code is 0:
+            if not status_code:
                 UserManager.append(ret)
                 login_user(ret)
                 UserManager.print_users()
@@ -48,10 +48,3 @@ def logout():
 @auth.before_app_request
 def before_request():
     return
-
-
-
-
-
-
-

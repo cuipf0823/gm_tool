@@ -15,6 +15,13 @@ import datetime
 DEFAULT_MAIL_SENDER = '创意空间官方'
 
 
+def init_valid_time():
+    """
+     mail vaild time 15 days
+    """
+    return 15 * 24
+
+
 def init_time(days=15):
     now = datetime.datetime.now()
     delta = datetime.timedelta(days=days)
@@ -32,7 +39,8 @@ def handle_query_mail(form):
     mail_info.setdefault('title', form.title.data)
     mail_info.setdefault('sender', form.sender.data)
     mail_info.setdefault('content', form.content.data)
-    mail_info.setdefault('valid_time', calc_second(form.valid_time.data))
+    vaild_time = (int(form.valid_time.data) * 3600 if int(form.valid_time.data) else init_valid_time() * 3600)
+    mail_info.setdefault('valid_time', vaild_time)
     delayed_time = calc_second(form.delayed_time.data)
     mail_info.setdefault('delayed_time', delayed_time if delayed_time > 0 else 0)
     mail_info.setdefault('is_popping', form.is_popping.data)
@@ -94,7 +102,7 @@ def query_param_mail(opt):
         ret = query_callback(opt, current_user, mail_info=mail_info)
         return render_template('index.html', operations=query_operators(), form=form, response=str(ret.response))
     form.sender.data = DEFAULT_MAIL_SENDER
-    form.valid_time.data = init_time()
+    form.valid_time.data = init_valid_time()
     form.delayed_time.data = init_time(days=0)
     form.mail_receiver.data.setdefault('receiver_type', 1)
     return render_template('index.html', operations=query_operators(), form=form)

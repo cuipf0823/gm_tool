@@ -1,11 +1,42 @@
 #!/usr/bin/python
 # coding=utf-8
 
+import time
 from collections import OrderedDict
 from .common import *
 from ..proto import gm_pb2
 from ..proto import error_code_pb2 as pb_error
 import logging
+
+
+def timestamp_datetime(value):
+    ft = '%Y-%m-%d %H:%M:%S'
+    value = time.localtime(value)
+    return time.strftime(ft, value)
+
+
+def format_output(header, rsp):
+    if header.msg_name.decode('utf-8') == 'gms.GMQueryUnsendMailRsp':
+        output = []
+        for item in rsp.mail_contents:
+            ft_str = "mail_id:{mail_id}\ntitle: {title}\nreceiver_type:{addressee_type} mail_type:{mail_type} " \
+                     "defined_content:{defined_content}\nis_destroy:{is_destroy} show_priority:{show_priority} " \
+                     "is_popping:{is_popping}\nvalid_time:{valid_time}\ndelayed_time:{delayed_time}\n" \
+                     "sender: {sender}\ncontent: {content}\n".format(mail_id=item.mail_id,
+                                                                     title=item.title.decode('utf-8'),
+                                                                     addressee_type=item.addressee_type,
+                                                                     mail_type=item.mail_type,
+                                                                     defined_content=item.defined_content,
+                                                                     is_destroy=item.is_destroy,
+                                                                     show_priority=item.show_priority,
+                                                                     is_popping=item.is_popping,
+                                                                     valid_time=timestamp_datetime(item.valid_time),
+                                                                     delayed_time=timestamp_datetime(item.delayed_time),
+                                                                     sender=item.sender.decode('utf-8'),
+                                                                     content=item.content.decode('utf-8'))
+            output.append(ft_str)
+        return '\n'.join(mail_info for mail_info in output)
+    return rsp
 
 
 def handle_response(tcp_connect, header, req):
@@ -29,7 +60,8 @@ def handle_response(tcp_connect, header, req):
         return QueryRet(header.errcode, req, err_desc)
     if not str(rsp):
         rsp = 'GM Server return empty!'
-    return QueryRet(StatusCode.SUCCESS, req, rsp)
+
+    return QueryRet(StatusCode.SUCCESS, req, format_output(header, rsp))
 
 
 # 无需参数

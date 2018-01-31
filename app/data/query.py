@@ -60,7 +60,7 @@ def handle_response(tcp_connect, header, req):
         return QueryRet(header.errcode, req, err_desc)
     if not str(rsp):
         rsp = 'GM Server return empty!'
-
+        return QueryRet(StatusCode.SUCCESS, req, rsp)
     return QueryRet(StatusCode.SUCCESS, req, format_output(header, rsp))
 
 

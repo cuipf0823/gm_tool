@@ -24,7 +24,6 @@ class DevelopmentConfig(Config):
     GM_SERVER_PORT = int(os.environ.get('GM_SERVER_DEV_PORT'))
 
 
-
 class TestConfig(Config):
     TESTING = True
     GM_SERVER_IP = os.environ.get('GM_SERVER_TEST_IP')

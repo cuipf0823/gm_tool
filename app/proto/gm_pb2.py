@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='gm.proto',
   package='gms',
   syntax='proto2',
-  serialized_pb=_b('\n\x08gm.proto\x12\x03gms\"!\n\x11GMCheckSessionReq\x12\x0c\n\x04name\x18\x01 \x02(\x0c\")\n\x11GMCheckSessionRsp\x12\x14\n\x0crandom_bytes\x18\x01 \x02(\x0c\"9\n\nGMLoginReq\x12\x14\n\x0crandom_bytes\x18\x01 \x02(\x0c\x12\x15\n\rencrypt_bytes\x18\x02 \x02(\x0c\"\x19\n\nGMLoginRsp\x12\x0b\n\x03gid\x18\x01 \x01(\r\"\x15\n\x13GMGetLastVersionReq\"U\n\x13GMGetLastVersionRsp\x12\x0e\n\x06\x66ield1\x18\x01 \x02(\r\x12\x0e\n\x06\x66ield2\x18\x02 \x02(\r\x12\x0e\n\x06\x66ield3\x18\x03 \x02(\r\x12\x0e\n\x06\x66ield4\x18\x04 \x02(\r\"\x17\n\x15GMGetAllServerListReq\"X\n\nServerBase\x12\n\n\x02id\x18\x01 \x02(\r\x12\n\n\x02ip\x18\x02 \x02(\x0c\x12\x0c\n\x04port\x18\x03 \x02(\r\x12\x0f\n\x07zone_id\x18\x04 \x02(\r\x12\x13\n\x0bserver_type\x18\x05 \x02(\r\">\n\x15GMGetAllServerListRsp\x12%\n\x0cserver_items\x18\x01 \x03(\x0b\x32\x0f.gms.ServerBase\"\x1b\n\x19GMGetWorkAllServerListReq\"\xd9\x01\n\x0cServerConfig\x12\n\n\x02id\x18\x01 \x02(\r\x12 \n\x07gateway\x18\x02 \x02(\x0b\x32\x0f.gms.ServerBase\x12\x1f\n\x06online\x18\x03 \x02(\x0b\x32\x0f.gms.ServerBase\x12\x10\n\x08logic_id\x18\x04 \x02(\r\x12\x12\n\nlogic_name\x18\x05 \x02(\x0c\x12\x0e\n\x06status\x18\x06 \x02(\r\x12\x11\n\topen_time\x18\x07 \x01(\r\x12\x19\n\x11max_online_number\x18\x08 \x02(\r\x12\x16\n\x0emax_all_number\x18\t \x02(\r\"C\n\x16GMGetWorkServerListRsp\x12)\n\x0eserver_configs\x18\x01 \x03(\x0b\x32\x11.gms.ServerConfig\"2\n\x1cGMGetServerRegisterNumberReq\x12\x12\n\nserver_ids\x18\x01 \x03(\r\"\x9b\x01\n\x1cGMGetServerRegisterNumberRsp\x12\x41\n\x0bnumber_pair\x18\x01 \x03(\x0b\x32,.gms.GMGetServerRegisterNumberRsp.NumberPair\x1a\x38\n\nNumberPair\x12\x11\n\tserver_id\x18\x01 \x02(\r\x12\x17\n\x0fregister_number\x18\x02 \x02(\r\",\n\x16GMGetOnlineInSwitchReq\x12\x12\n\nserver_ids\x18\x01 \x03(\r\"\x95\x02\n\x16GMGetOnlineInSwitchRsp\x12\x37\n\x07servers\x18\x01 \x03(\x0b\x32&.gms.GMGetOnlineInSwitchRsp.ServerBase\x1a\xc1\x01\n\nServerBase\x12\n\n\x02ip\x18\x01 \x02(\x0c\x12\x0c\n\x04port\x18\x02 \x02(\r\x12\x11\n\tserver_id\x18\x03 \x02(\r\x12\x43\n\x06status\x18\x04 \x02(\x0e\x32\x33.gms.GMGetOnlineInSwitchRsp.ServerBase.ServerStatus\x12\x15\n\ronline_number\x18\x05 \x02(\r\"*\n\x0cServerStatus\x12\n\n\x06NORMAL\x10\x01\x12\x0e\n\nDISCONNECT\x10\x02\"i\n\x0eGMQueryUserReq\x12-\n\x07players\x18\x01 \x02(\x0b\x32\x1c.gms.GMQueryUserReq.PlayerIn\x1a(\n\x08PlayerIn\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\"B\n\x0eGMQueryUserRsp\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\x12\x12\n\nserver_ids\x18\x03 \x03(\r\"u\n\x14GMQueryUserOnlineReq\x12\x33\n\x07players\x18\x01 \x03(\x0b\x32\".gms.GMQueryUserOnlineReq.PlayerIn\x1a(\n\x08PlayerIn\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\"\xb7\x02\n\x14GMQueryUserOnlineRsp\x12\x34\n\x07players\x18\x01 \x03(\x0b\x32#.gms.GMQueryUserOnlineRsp.PlayerOut\x1a\xe8\x01\n\tPlayerOut\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\x12\x11\n\tserver_id\x18\x03 \x02(\r\x12G\n\rplayer_status\x18\x04 \x02(\x0e\x32\x30.gms.GMQueryUserOnlineRsp.PlayerOut.PlayerStatus\"a\n\x0cPlayerStatus\x12\x12\n\x0ePLAYER_KICKING\x10\x01\x12\x11\n\rPLAYER_NORMAL\x10\x02\x12\x16\n\x12PLAYER_KICKING_ALL\x10\x03\x12\x12\n\x0ePLAYER_OFFLINE\x10\x04\"4\n\x1fGMQueryAllUserBaseInfoOnlineReq\x12\x11\n\tserver_id\x18\x01 \x02(\r\"\xaa\x01\n\x1fGMQueryAllUserBaseInfoOnlineRsp\x12\x11\n\tserver_id\x18\x01 \x02(\r\x12<\n\x07players\x18\x02 \x03(\x0b\x32+.gms.GMQueryAllUserBaseInfoOnlineRsp.Player\x1a\x36\n\x06Player\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\x12\x0e\n\x06status\x18\x03 \x02(\r\"-\n\rGMKickUserReq\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\">\n\x0bGMKickedRsp\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\x12\x11\n\tserver_id\x18\x03 \x02(\r\"b\n\x18GMQueryOnlineUserInfoReq\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\x12\x13\n\x0bresponse_fd\x18\x03 \x01(\r\x12\x13\n\x0bresponse_id\x18\x04 \x01(\r\"\xc7\x04\n\x18GMQueryOnlineUserInfoRsp\x12\x34\n\x06player\x18\x01 \x01(\x0b\x32$.gms.GMQueryOnlineUserInfoRsp.Player\x12\x13\n\x0bresponse_fd\x18\x02 \x01(\r\x12\x13\n\x0bresponse_id\x18\x03 \x01(\r\x1a\xca\x03\n\x06Player\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\x12\x0b\n\x03sex\x18\x03 \x01(\r\x12\x0b\n\x03seq\x18\x04 \x01(\r\x12\x0f\n\x07zone_id\x18\x05 \x01(\r\x12\x12\n\nclient_seq\x18\x06 \x01(\r\x12\x0f\n\x07skin_id\x18\x07 \x01(\r\x12\x10\n\x08reg_time\x18\x08 \x01(\r\x12\x17\n\x0fgateway_session\x18\t \x01(\x04\x12\t\n\x01x\x18\n \x01(\x01\x12\t\n\x01y\x18\x0b \x01(\x01\x12\t\n\x01z\x18\x0c \x01(\x01\x12\x0b\n\x03row\x18\r \x01(\r\x12\x0b\n\x03\x63ol\x18\x0e \x01(\r\x12\x0e\n\x06\x66\x61\x63ing\x18\x0f \x01(\x01\x12\r\n\x05pitch\x18\x10 \x01(\x01\x12\x0f\n\x07\x61nim_id\x18\x11 \x01(\r\x12\x10\n\x08\x66lag_pos\x18\x12 \x01(\r\x12\x0c\n\x04nick\x18\x13 \x01(\x0c\x12\n\n\x02\x66\x64\x18\x14 \x01(\x05\x12\r\n\x05\x66\x64_id\x18\x15 \x01(\r\x12\x15\n\rplayer_status\x18\x17 \x01(\r\x12\x12\n\nlogin_time\x18\x18 \x01(\r\x12\x12\n\ntotal_time\x18\x19 \x01(\r\x12\x0f\n\x07room_id\x18\x1a \x01(\x04\x12\x12\n\nlimits_bit\x18\x1b \x01(\r\x12\x1d\n\x15other_gateway_session\x18\x1c \x01(\x04\"x\n\x18GMGetTunnelServerInfoReq\x12\x35\n\x04keys\x18\x01 \x03(\x0b\x32\'.gms.GMGetTunnelServerInfoReq.ServerKey\x1a%\n\tServerKey\x12\n\n\x02ip\x18\x01 \x02(\x0c\x12\x0c\n\x04port\x18\x02 \x02(\r\"\x9e\x02\n\x18GMGetTunnelServerInfoRsp\x12;\n\x07servers\x18\x01 \x03(\x0b\x32*.gms.GMGetTunnelServerInfoRsp.TunnelServer\x1aX\n\x04Room\x12\x0f\n\x07room_id\x18\x01 \x02(\x04\x12\x17\n\x0fregister_number\x18\x02 \x02(\r\x12\x15\n\ronline_number\x18\x03 \x02(\r\x12\x0f\n\x07own_uid\x18\x04 \x02(\r\x1ak\n\x0cTunnelServer\x12\n\n\x02ip\x18\x01 \x02(\x0c\x12\x0c\n\x04port\x18\x02 \x02(\r\x12\x0e\n\x06number\x18\x03 \x01(\r\x12\x31\n\x05rooms\x18\x04 \x03(\x0b\x32\".gms.GMGetTunnelServerInfoRsp.Room\"<\n\x10GMPushMessageReq\x12\x14\n\x0cpush_message\x18\x01 \x02(\x0c\x12\x12\n\nserver_ids\x18\x02 \x03(\r\"\x12\n\x10GMPushMessageRsp\"T\n\x15GMGetAllServerRoomReq\x12\x11\n\tserver_id\x18\x01 \x02(\r\x12\x13\n\x0bresponse_fd\x18\x02 \x01(\r\x12\x13\n\x0bresponse_id\x18\x03 \x01(\r\"S\n\x15GMGetAllServerRoomRsp\x12\x10\n\x08room_ids\x18\x01 \x03(\x04\x12\x13\n\x0bresponse_fd\x18\x02 \x01(\r\x12\x13\n\x0bresponse_id\x18\x03 \x01(\r\"`\n\x10GMGetRoomInfoReq\x12\x11\n\tserver_id\x18\x01 \x02(\r\x12\x0f\n\x07room_id\x18\x02 \x02(\x04\x12\x13\n\x0bresponse_fd\x18\x03 \x01(\r\x12\x13\n\x0bresponse_id\x18\x04 \x01(\r\"\xf7\x02\n\x10GMGetRoomInfoRsp\x12\x0f\n\x07room_id\x18\x01 \x02(\x04\x12\x11\n\troom_name\x18\x02 \x02(\x0c\x12\x0e\n\x06res_id\x18\x03 \x02(\r\x12\x13\n\x0bmax_mem_num\x18\x04 \x02(\r\x12\x12\n\x08password\x18\x05 \x01(\x0c:\x00\x12\x11\n\towner_uid\x18\x06 \x02(\r\x12\x18\n\rowner_channel\x18\x07 \x01(\r:\x01\x30\x12\x15\n\nlimits_bit\x18\x08 \x01(\r:\x01\x30\x12\x16\n\x0b\x63ur_mem_num\x18\t \x01(\r:\x01\x30\x12\x16\n\x0b\x63reate_time\x18\n \x01(\r:\x01\x30\x12-\n\x07members\x18\x0b \x03(\x0b\x32\x1c.gms.GMGetRoomInfoRsp.Member\x12\x13\n\x0bresponse_fd\x18\x0c \x01(\r\x12\x13\n\x0bresponse_id\x18\r \x01(\r\x1a\x39\n\x06Member\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x12\n\x07\x63hannel\x18\x02 \x01(\r:\x01\x30\x12\x0e\n\x04nick\x18\x03 \x01(\x0c:\x00\"d\n\x17GMGetPlayerCraftInfoReq\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x12\n\x07\x63hannel\x18\x02 \x01(\r:\x01\x30\x12\x13\n\x0bresponse_fd\x18\x03 \x01(\r\x12\x13\n\x0bresponse_id\x18\x04 \x01(\r\"\xb4\x03\n\x17GMGetPlayerCraftInfoRsp\x12\x36\n\x06\x63rafts\x18\x01 \x03(\x0b\x32&.gms.GMGetPlayerCraftInfoRsp.CraftInfo\x12\x15\n\rcur_craft_uid\x18\x02 \x01(\x04\x12\x13\n\x0bresponse_fd\x18\x03 \x01(\r\x12\x13\n\x0bresponse_id\x18\x04 \x01(\r\x1a\xcc\x01\n\tCraftInfo\x12\x11\n\tcraft_uid\x18\x01 \x02(\x04\x12\x0e\n\x06res_id\x18\x02 \x02(\r\x12\x12\n\ncraft_name\x18\x03 \x02(\x0c\x12\x13\n\x0b\x63reate_time\x18\x04 \x01(\r\x12\x13\n\x0bvisit_count\x18\x05 \x01(\r\x12\x10\n\x08\x64uration\x18\x06 \x01(\r\x12\x38\n\x06\x61\x63\x63\x65ss\x18\x07 \x01(\x0e\x32(.gms.GMGetPlayerCraftInfoRsp.CraftAccess\x12\x12\n\nreview_num\x18\x08 \x01(\r\"Q\n\x0b\x43raftAccess\x12\x14\n\x10VIEW_ALL_PLAYERS\x10\x01\x12\x15\n\x11VIEW_ONLY_FRIENDS\x10\x02\x12\x15\n\x11VIEW_ONLY_ONESELF\x10\x03\"&\n\x06\x46riend\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\"_\n\x12GMGetFriendListReq\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x12\n\x07\x63hannel\x18\x02 \x01(\r:\x01\x30\x12\x13\n\x0bresponse_fd\x18\x03 \x01(\r\x12\x13\n\x0bresponse_id\x18\x04 \x01(\r\"`\n\x12GMGetFriendListRsp\x12 \n\x0b\x66riend_list\x18\x01 \x03(\x0b\x32\x0b.gms.Friend\x12\x13\n\x0bresponse_fd\x18\x02 \x01(\r\x12\x13\n\x0bresponse_id\x18\x03 \x01(\r\"^\n\x11GMGetBlackListReq\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x12\n\x07\x63hannel\x18\x02 \x01(\r:\x01\x30\x12\x13\n\x0bresponse_fd\x18\x03 \x01(\r\x12\x13\n\x0bresponse_id\x18\x04 \x01(\r\"^\n\x11GMGetBlackListRsp\x12\x1f\n\nblack_list\x18\x01 \x03(\x0b\x32\x0b.gms.Friend\x12\x13\n\x0bresponse_fd\x18\x02 \x01(\r\x12\x13\n\x0bresponse_id\x18\x03 \x01(\r\"]\n\x10GMGetPushListReq\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x12\n\x07\x63hannel\x18\x02 \x01(\r:\x01\x30\x12\x13\n\x0bresponse_fd\x18\x03 \x01(\r\x12\x13\n\x0bresponse_id\x18\x04 \x01(\r\"\\\n\x10GMGetPushListRsp\x12\x1e\n\tpush_list\x18\x01 \x03(\x0b\x32\x0b.gms.Friend\x12\x13\n\x0bresponse_fd\x18\x02 \x01(\r\x12\x13\n\x0bresponse_id\x18\x03 \x01(\r\"\xea\x03\n\x0bMailContent\x12\x0e\n\x06gm_uid\x18\x01 \x02(\r\x12\x16\n\x0e\x61\x64\x64ressee_type\x18\x02 \x02(\r\x12\x12\n\nonline_ids\x18\x03 \x03(\r\x12\x0c\n\x04uids\x18\x04 \x03(\r\x12\x10\n\x08\x63hannels\x18\x05 \x03(\r\x12\x0e\n\x06sender\x18\x06 \x02(\x0c\x12\r\n\x05title\x18\x07 \x02(\x0c\x12\x0f\n\x07\x63ontent\x18\x08 \x02(\x0c\x12\x17\n\x0f\x64\x65\x66ined_content\x18\t \x01(\x0c\x12\x12\n\nvalid_time\x18\n \x02(\r\x12\x11\n\tmail_type\x18\x0b \x02(\r\x12\x12\n\nis_destroy\x18\x0c \x02(\r\x12\x38\n\rshow_priority\x18\r \x02(\x0e\x32!.gms.MailContent.MailShowPriority\x12\x12\n\nis_popping\x18\x0e \x02(\r\x12\x34\n\x0f\x61ttachment_list\x18\x0f \x03(\x0b\x32\x1b.gms.MailContent.Attachment\x12\x14\n\x0c\x64\x65layed_time\x18\x10 \x02(\r\x12\x0f\n\x07mail_id\x18\x11 \x01(\x04\x1a\'\n\nAttachment\x12\n\n\x02id\x18\x01 \x02(\r\x12\r\n\x05\x63ount\x18\x02 \x02(\r\"\'\n\x10MailShowPriority\x12\n\n\x06Normal\x10\x00\x12\x07\n\x03Top\x10\x01\"7\n\rGMSendMailReq\x12&\n\x0cmail_content\x18\x01 \x02(\x0b\x32\x10.gms.MailContent\" \n\rGMSendMailRsp\x12\x0f\n\x07mail_id\x18\x01 \x02(\x04\"\x16\n\x14GMQueryUnsendMailReq\"?\n\x14GMQueryUnsendMailRsp\x12\'\n\rmail_contents\x18\x01 \x03(\x0b\x32\x10.gms.MailContent\")\n\x15GMDeleteUnsendMailReq\x12\x10\n\x08mail_ids\x18\x01 \x03(\x04\")\n\x15GMDeleteUnsendMailRsp\x12\x10\n\x08mail_ids\x18\x01 \x03(\x04')
+  serialized_pb=_b('\n\x08gm.proto\x12\x03gms\"!\n\x11GMCheckSessionReq\x12\x0c\n\x04name\x18\x01 \x02(\x0c\")\n\x11GMCheckSessionRsp\x12\x14\n\x0crandom_bytes\x18\x01 \x02(\x0c\"9\n\nGMLoginReq\x12\x14\n\x0crandom_bytes\x18\x01 \x02(\x0c\x12\x15\n\rencrypt_bytes\x18\x02 \x02(\x0c\"\x19\n\nGMLoginRsp\x12\x0b\n\x03gid\x18\x01 \x01(\r\"\x15\n\x13GMGetLastVersionReq\"U\n\x13GMGetLastVersionRsp\x12\x0e\n\x06\x66ield1\x18\x01 \x02(\r\x12\x0e\n\x06\x66ield2\x18\x02 \x02(\r\x12\x0e\n\x06\x66ield3\x18\x03 \x02(\r\x12\x0e\n\x06\x66ield4\x18\x04 \x02(\r\"\x17\n\x15GMGetAllServerListReq\"X\n\nServerBase\x12\n\n\x02id\x18\x01 \x02(\r\x12\n\n\x02ip\x18\x02 \x02(\x0c\x12\x0c\n\x04port\x18\x03 \x02(\r\x12\x0f\n\x07zone_id\x18\x04 \x02(\r\x12\x13\n\x0bserver_type\x18\x05 \x02(\r\">\n\x15GMGetAllServerListRsp\x12%\n\x0cserver_items\x18\x01 \x03(\x0b\x32\x0f.gms.ServerBase\"\x1b\n\x19GMGetWorkAllServerListReq\"\xd9\x01\n\x0cServerConfig\x12\n\n\x02id\x18\x01 \x02(\r\x12 \n\x07gateway\x18\x02 \x02(\x0b\x32\x0f.gms.ServerBase\x12\x1f\n\x06online\x18\x03 \x02(\x0b\x32\x0f.gms.ServerBase\x12\x10\n\x08logic_id\x18\x04 \x02(\r\x12\x12\n\nlogic_name\x18\x05 \x02(\x0c\x12\x0e\n\x06status\x18\x06 \x02(\r\x12\x11\n\topen_time\x18\x07 \x01(\r\x12\x19\n\x11max_online_number\x18\x08 \x02(\r\x12\x16\n\x0emax_all_number\x18\t \x02(\r\"C\n\x16GMGetWorkServerListRsp\x12)\n\x0eserver_configs\x18\x01 \x03(\x0b\x32\x11.gms.ServerConfig\"2\n\x1cGMGetServerRegisterNumberReq\x12\x12\n\nserver_ids\x18\x01 \x03(\r\"\x9b\x01\n\x1cGMGetServerRegisterNumberRsp\x12\x41\n\x0bnumber_pair\x18\x01 \x03(\x0b\x32,.gms.GMGetServerRegisterNumberRsp.NumberPair\x1a\x38\n\nNumberPair\x12\x11\n\tserver_id\x18\x01 \x02(\r\x12\x17\n\x0fregister_number\x18\x02 \x02(\r\",\n\x16GMGetOnlineInSwitchReq\x12\x12\n\nserver_ids\x18\x01 \x03(\r\"\x95\x02\n\x16GMGetOnlineInSwitchRsp\x12\x37\n\x07servers\x18\x01 \x03(\x0b\x32&.gms.GMGetOnlineInSwitchRsp.ServerBase\x1a\xc1\x01\n\nServerBase\x12\n\n\x02ip\x18\x01 \x02(\x0c\x12\x0c\n\x04port\x18\x02 \x02(\r\x12\x11\n\tserver_id\x18\x03 \x02(\r\x12\x43\n\x06status\x18\x04 \x02(\x0e\x32\x33.gms.GMGetOnlineInSwitchRsp.ServerBase.ServerStatus\x12\x15\n\ronline_number\x18\x05 \x02(\r\"*\n\x0cServerStatus\x12\n\n\x06NORMAL\x10\x01\x12\x0e\n\nDISCONNECT\x10\x02\"i\n\x0eGMQueryUserReq\x12-\n\x07players\x18\x01 \x02(\x0b\x32\x1c.gms.GMQueryUserReq.PlayerIn\x1a(\n\x08PlayerIn\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\"B\n\x0eGMQueryUserRsp\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\x12\x12\n\nserver_ids\x18\x03 \x03(\r\"u\n\x14GMQueryUserOnlineReq\x12\x33\n\x07players\x18\x01 \x03(\x0b\x32\".gms.GMQueryUserOnlineReq.PlayerIn\x1a(\n\x08PlayerIn\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\"\xb7\x02\n\x14GMQueryUserOnlineRsp\x12\x34\n\x07players\x18\x01 \x03(\x0b\x32#.gms.GMQueryUserOnlineRsp.PlayerOut\x1a\xe8\x01\n\tPlayerOut\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\x12\x11\n\tserver_id\x18\x03 \x02(\r\x12G\n\rplayer_status\x18\x04 \x02(\x0e\x32\x30.gms.GMQueryUserOnlineRsp.PlayerOut.PlayerStatus\"a\n\x0cPlayerStatus\x12\x12\n\x0ePLAYER_KICKING\x10\x01\x12\x11\n\rPLAYER_NORMAL\x10\x02\x12\x16\n\x12PLAYER_KICKING_ALL\x10\x03\x12\x12\n\x0ePLAYER_OFFLINE\x10\x04\"4\n\x1fGMQueryAllUserBaseInfoOnlineReq\x12\x11\n\tserver_id\x18\x01 \x02(\r\"\xaa\x01\n\x1fGMQueryAllUserBaseInfoOnlineRsp\x12\x11\n\tserver_id\x18\x01 \x02(\r\x12<\n\x07players\x18\x02 \x03(\x0b\x32+.gms.GMQueryAllUserBaseInfoOnlineRsp.Player\x1a\x36\n\x06Player\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\x12\x0e\n\x06status\x18\x03 \x02(\r\"-\n\rGMKickUserReq\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\">\n\x0bGMKickedRsp\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\x12\x11\n\tserver_id\x18\x03 \x02(\r\"b\n\x18GMQueryOnlineUserInfoReq\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\x12\x13\n\x0bresponse_fd\x18\x03 \x01(\r\x12\x13\n\x0bresponse_id\x18\x04 \x01(\r\"\xc7\x04\n\x18GMQueryOnlineUserInfoRsp\x12\x34\n\x06player\x18\x01 \x01(\x0b\x32$.gms.GMQueryOnlineUserInfoRsp.Player\x12\x13\n\x0bresponse_fd\x18\x02 \x01(\r\x12\x13\n\x0bresponse_id\x18\x03 \x01(\r\x1a\xca\x03\n\x06Player\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\x12\x0b\n\x03sex\x18\x03 \x01(\r\x12\x0b\n\x03seq\x18\x04 \x01(\r\x12\x0f\n\x07zone_id\x18\x05 \x01(\r\x12\x12\n\nclient_seq\x18\x06 \x01(\r\x12\x0f\n\x07skin_id\x18\x07 \x01(\r\x12\x10\n\x08reg_time\x18\x08 \x01(\r\x12\x17\n\x0fgateway_session\x18\t \x01(\x04\x12\t\n\x01x\x18\n \x01(\x01\x12\t\n\x01y\x18\x0b \x01(\x01\x12\t\n\x01z\x18\x0c \x01(\x01\x12\x0b\n\x03row\x18\r \x01(\r\x12\x0b\n\x03\x63ol\x18\x0e \x01(\r\x12\x0e\n\x06\x66\x61\x63ing\x18\x0f \x01(\x01\x12\r\n\x05pitch\x18\x10 \x01(\x01\x12\x0f\n\x07\x61nim_id\x18\x11 \x01(\r\x12\x10\n\x08\x66lag_pos\x18\x12 \x01(\r\x12\x0c\n\x04nick\x18\x13 \x01(\x0c\x12\n\n\x02\x66\x64\x18\x14 \x01(\x05\x12\r\n\x05\x66\x64_id\x18\x15 \x01(\r\x12\x15\n\rplayer_status\x18\x17 \x01(\r\x12\x12\n\nlogin_time\x18\x18 \x01(\r\x12\x12\n\ntotal_time\x18\x19 \x01(\r\x12\x0f\n\x07room_id\x18\x1a \x01(\x04\x12\x12\n\nlimits_bit\x18\x1b \x01(\r\x12\x1d\n\x15other_gateway_session\x18\x1c \x01(\x04\"x\n\x18GMGetTunnelServerInfoReq\x12\x35\n\x04keys\x18\x01 \x03(\x0b\x32\'.gms.GMGetTunnelServerInfoReq.ServerKey\x1a%\n\tServerKey\x12\n\n\x02ip\x18\x01 \x02(\x0c\x12\x0c\n\x04port\x18\x02 \x02(\r\"\x9e\x02\n\x18GMGetTunnelServerInfoRsp\x12;\n\x07servers\x18\x01 \x03(\x0b\x32*.gms.GMGetTunnelServerInfoRsp.TunnelServer\x1aX\n\x04Room\x12\x0f\n\x07room_id\x18\x01 \x02(\x04\x12\x17\n\x0fregister_number\x18\x02 \x02(\r\x12\x15\n\ronline_number\x18\x03 \x02(\r\x12\x0f\n\x07own_uid\x18\x04 \x02(\r\x1ak\n\x0cTunnelServer\x12\n\n\x02ip\x18\x01 \x02(\x0c\x12\x0c\n\x04port\x18\x02 \x02(\r\x12\x0e\n\x06number\x18\x03 \x01(\r\x12\x31\n\x05rooms\x18\x04 \x03(\x0b\x32\".gms.GMGetTunnelServerInfoRsp.Room\"<\n\x10GMPushMessageReq\x12\x14\n\x0cpush_message\x18\x01 \x02(\x0c\x12\x12\n\nserver_ids\x18\x02 \x03(\r\"\x12\n\x10GMPushMessageRsp\"T\n\x15GMGetAllServerRoomReq\x12\x11\n\tserver_id\x18\x01 \x02(\r\x12\x13\n\x0bresponse_fd\x18\x02 \x01(\r\x12\x13\n\x0bresponse_id\x18\x03 \x01(\r\"S\n\x15GMGetAllServerRoomRsp\x12\x10\n\x08room_ids\x18\x01 \x03(\x04\x12\x13\n\x0bresponse_fd\x18\x02 \x01(\r\x12\x13\n\x0bresponse_id\x18\x03 \x01(\r\"`\n\x10GMGetRoomInfoReq\x12\x11\n\tserver_id\x18\x01 \x02(\r\x12\x0f\n\x07room_id\x18\x02 \x02(\x04\x12\x13\n\x0bresponse_fd\x18\x03 \x01(\r\x12\x13\n\x0bresponse_id\x18\x04 \x01(\r\"\xf7\x02\n\x10GMGetRoomInfoRsp\x12\x0f\n\x07room_id\x18\x01 \x02(\x04\x12\x11\n\troom_name\x18\x02 \x02(\x0c\x12\x0e\n\x06res_id\x18\x03 \x02(\r\x12\x13\n\x0bmax_mem_num\x18\x04 \x02(\r\x12\x12\n\x08password\x18\x05 \x01(\x0c:\x00\x12\x11\n\towner_uid\x18\x06 \x02(\r\x12\x18\n\rowner_channel\x18\x07 \x01(\r:\x01\x30\x12\x15\n\nlimits_bit\x18\x08 \x01(\r:\x01\x30\x12\x16\n\x0b\x63ur_mem_num\x18\t \x01(\r:\x01\x30\x12\x16\n\x0b\x63reate_time\x18\n \x01(\r:\x01\x30\x12-\n\x07members\x18\x0b \x03(\x0b\x32\x1c.gms.GMGetRoomInfoRsp.Member\x12\x13\n\x0bresponse_fd\x18\x0c \x01(\r\x12\x13\n\x0bresponse_id\x18\r \x01(\r\x1a\x39\n\x06Member\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x12\n\x07\x63hannel\x18\x02 \x01(\r:\x01\x30\x12\x0e\n\x04nick\x18\x03 \x01(\x0c:\x00\"d\n\x17GMGetPlayerCraftInfoReq\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x12\n\x07\x63hannel\x18\x02 \x01(\r:\x01\x30\x12\x13\n\x0bresponse_fd\x18\x03 \x01(\r\x12\x13\n\x0bresponse_id\x18\x04 \x01(\r\"\xb4\x03\n\x17GMGetPlayerCraftInfoRsp\x12\x36\n\x06\x63rafts\x18\x01 \x03(\x0b\x32&.gms.GMGetPlayerCraftInfoRsp.CraftInfo\x12\x15\n\rcur_craft_uid\x18\x02 \x01(\x04\x12\x13\n\x0bresponse_fd\x18\x03 \x01(\r\x12\x13\n\x0bresponse_id\x18\x04 \x01(\r\x1a\xcc\x01\n\tCraftInfo\x12\x11\n\tcraft_uid\x18\x01 \x02(\x04\x12\x0e\n\x06res_id\x18\x02 \x02(\r\x12\x12\n\ncraft_name\x18\x03 \x02(\x0c\x12\x13\n\x0b\x63reate_time\x18\x04 \x01(\r\x12\x13\n\x0bvisit_count\x18\x05 \x01(\r\x12\x10\n\x08\x64uration\x18\x06 \x01(\r\x12\x38\n\x06\x61\x63\x63\x65ss\x18\x07 \x01(\x0e\x32(.gms.GMGetPlayerCraftInfoRsp.CraftAccess\x12\x12\n\nreview_num\x18\x08 \x01(\r\"Q\n\x0b\x43raftAccess\x12\x14\n\x10VIEW_ALL_PLAYERS\x10\x01\x12\x15\n\x11VIEW_ONLY_FRIENDS\x10\x02\x12\x15\n\x11VIEW_ONLY_ONESELF\x10\x03\"&\n\x06\x46riend\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x0f\n\x07\x63hannel\x18\x02 \x01(\r\"_\n\x12GMGetFriendListReq\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x12\n\x07\x63hannel\x18\x02 \x01(\r:\x01\x30\x12\x13\n\x0bresponse_fd\x18\x03 \x01(\r\x12\x13\n\x0bresponse_id\x18\x04 \x01(\r\"`\n\x12GMGetFriendListRsp\x12 \n\x0b\x66riend_list\x18\x01 \x03(\x0b\x32\x0b.gms.Friend\x12\x13\n\x0bresponse_fd\x18\x02 \x01(\r\x12\x13\n\x0bresponse_id\x18\x03 \x01(\r\"^\n\x11GMGetBlackListReq\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x12\n\x07\x63hannel\x18\x02 \x01(\r:\x01\x30\x12\x13\n\x0bresponse_fd\x18\x03 \x01(\r\x12\x13\n\x0bresponse_id\x18\x04 \x01(\r\"^\n\x11GMGetBlackListRsp\x12\x1f\n\nblack_list\x18\x01 \x03(\x0b\x32\x0b.gms.Friend\x12\x13\n\x0bresponse_fd\x18\x02 \x01(\r\x12\x13\n\x0bresponse_id\x18\x03 \x01(\r\"]\n\x10GMGetPushListReq\x12\x0b\n\x03uid\x18\x01 \x02(\r\x12\x12\n\x07\x63hannel\x18\x02 \x01(\r:\x01\x30\x12\x13\n\x0bresponse_fd\x18\x03 \x01(\r\x12\x13\n\x0bresponse_id\x18\x04 \x01(\r\"\\\n\x10GMGetPushListRsp\x12\x1e\n\tpush_list\x18\x01 \x03(\x0b\x32\x0b.gms.Friend\x12\x13\n\x0bresponse_fd\x18\x02 \x01(\r\x12\x13\n\x0bresponse_id\x18\x03 \x01(\r\"\xea\x03\n\x0bMailContent\x12\x0e\n\x06gm_uid\x18\x01 \x02(\r\x12\x16\n\x0e\x61\x64\x64ressee_type\x18\x02 \x02(\r\x12\x12\n\nonline_ids\x18\x03 \x03(\r\x12\x0c\n\x04uids\x18\x04 \x03(\r\x12\x10\n\x08\x63hannels\x18\x05 \x03(\r\x12\x0e\n\x06sender\x18\x06 \x02(\x0c\x12\r\n\x05title\x18\x07 \x02(\x0c\x12\x0f\n\x07\x63ontent\x18\x08 \x02(\x0c\x12\x17\n\x0f\x64\x65\x66ined_content\x18\t \x01(\x0c\x12\x12\n\nvalid_time\x18\n \x02(\r\x12\x11\n\tmail_type\x18\x0b \x02(\r\x12\x12\n\nis_destroy\x18\x0c \x02(\r\x12\x38\n\rshow_priority\x18\r \x02(\x0e\x32!.gms.MailContent.MailShowPriority\x12\x12\n\nis_popping\x18\x0e \x02(\r\x12\x34\n\x0f\x61ttachment_list\x18\x0f \x03(\x0b\x32\x1b.gms.MailContent.Attachment\x12\x14\n\x0c\x64\x65layed_time\x18\x10 \x02(\r\x12\x0f\n\x07mail_id\x18\x11 \x01(\x04\x1a\'\n\nAttachment\x12\n\n\x02id\x18\x01 \x02(\r\x12\r\n\x05\x63ount\x18\x02 \x02(\r\"\'\n\x10MailShowPriority\x12\n\n\x06Normal\x10\x00\x12\x07\n\x03Top\x10\x01\"7\n\rGMSendMailReq\x12&\n\x0cmail_content\x18\x01 \x02(\x0b\x32\x10.gms.MailContent\" \n\rGMSendMailRsp\x12\x0f\n\x07mail_id\x18\x01 \x02(\x04\"\x16\n\x14GMQueryUnsendMailReq\"?\n\x14GMQueryUnsendMailRsp\x12\'\n\rmail_contents\x18\x01 \x03(\x0b\x32\x10.gms.MailContent\")\n\x15GMDeleteUnsendMailReq\x12\x10\n\x08mail_ids\x18\x01 \x03(\x04\")\n\x15GMDeleteUnsendMailRsp\x12\x10\n\x08mail_ids\x18\x01 \x03(\x04\"\'\n\x13GMDeleteSendMailReq\x12\x10\n\x08mail_ids\x18\x01 \x03(\x04\"(\n\x13GMDeleteSendMailRsp\x12\x11\n\tmail_keys\x18\x01 \x03(\x0c\"\x15\n\x13GMCheckValidMailReq\"\xa8\x02\n\x13GMCheckValidMailRsp\x12:\n\x0cmail_content\x18\x01 \x03(\x0b\x32$.gms.GMCheckValidMailRsp.MailContent\x1a\xd4\x01\n\x0bMailContent\x12\x0f\n\x07mail_id\x18\x01 \x02(\x04\x12\x0b\n\x03gid\x18\x02 \x02(\r\x12\x11\n\tonline_id\x18\x03 \x02(\r\x12\x11\n\tmail_type\x18\x04 \x02(\r\x12\x13\n\x0bmail_sender\x18\x05 \x02(\x0c\x12\x12\n\nmail_title\x18\x06 \x02(\x0c\x12\x14\n\x0cmail_content\x18\x07 \x02(\x0c\x12\x13\n\x0bmail_source\x18\x08 \x02(\r\x12\x17\n\x0fmail_valid_time\x18\t \x02(\r\x12\x14\n\x0c\x64\x65layed_time\x18\n \x02(\r')
 )
 
 
@@ -3013,6 +3013,216 @@ _GMDELETEUNSENDMAILRSP = _descriptor.Descriptor(
   serialized_end=6010,
 )
 
+
+_GMDELETESENDMAILREQ = _descriptor.Descriptor(
+  name='GMDeleteSendMailReq',
+  full_name='gms.GMDeleteSendMailReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='mail_ids', full_name='gms.GMDeleteSendMailReq.mail_ids', index=0,
+      number=1, type=4, cpp_type=4, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=6012,
+  serialized_end=6051,
+)
+
+
+_GMDELETESENDMAILRSP = _descriptor.Descriptor(
+  name='GMDeleteSendMailRsp',
+  full_name='gms.GMDeleteSendMailRsp',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='mail_keys', full_name='gms.GMDeleteSendMailRsp.mail_keys', index=0,
+      number=1, type=12, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=6053,
+  serialized_end=6093,
+)
+
+
+_GMCHECKVALIDMAILREQ = _descriptor.Descriptor(
+  name='GMCheckValidMailReq',
+  full_name='gms.GMCheckValidMailReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=6095,
+  serialized_end=6116,
+)
+
+
+_GMCHECKVALIDMAILRSP_MAILCONTENT = _descriptor.Descriptor(
+  name='MailContent',
+  full_name='gms.GMCheckValidMailRsp.MailContent',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='mail_id', full_name='gms.GMCheckValidMailRsp.MailContent.mail_id', index=0,
+      number=1, type=4, cpp_type=4, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='gid', full_name='gms.GMCheckValidMailRsp.MailContent.gid', index=1,
+      number=2, type=13, cpp_type=3, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='online_id', full_name='gms.GMCheckValidMailRsp.MailContent.online_id', index=2,
+      number=3, type=13, cpp_type=3, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='mail_type', full_name='gms.GMCheckValidMailRsp.MailContent.mail_type', index=3,
+      number=4, type=13, cpp_type=3, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='mail_sender', full_name='gms.GMCheckValidMailRsp.MailContent.mail_sender', index=4,
+      number=5, type=12, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='mail_title', full_name='gms.GMCheckValidMailRsp.MailContent.mail_title', index=5,
+      number=6, type=12, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='mail_content', full_name='gms.GMCheckValidMailRsp.MailContent.mail_content', index=6,
+      number=7, type=12, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='mail_source', full_name='gms.GMCheckValidMailRsp.MailContent.mail_source', index=7,
+      number=8, type=13, cpp_type=3, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='mail_valid_time', full_name='gms.GMCheckValidMailRsp.MailContent.mail_valid_time', index=8,
+      number=9, type=13, cpp_type=3, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='delayed_time', full_name='gms.GMCheckValidMailRsp.MailContent.delayed_time', index=9,
+      number=10, type=13, cpp_type=3, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=6203,
+  serialized_end=6415,
+)
+
+_GMCHECKVALIDMAILRSP = _descriptor.Descriptor(
+  name='GMCheckValidMailRsp',
+  full_name='gms.GMCheckValidMailRsp',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='mail_content', full_name='gms.GMCheckValidMailRsp.mail_content', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[_GMCHECKVALIDMAILRSP_MAILCONTENT, ],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=6119,
+  serialized_end=6415,
+)
+
 _GMGETALLSERVERLISTRSP.fields_by_name['server_items'].message_type = _SERVERBASE
 _SERVERCONFIG.fields_by_name['gateway'].message_type = _SERVERBASE
 _SERVERCONFIG.fields_by_name['online'].message_type = _SERVERBASE
@@ -3056,6 +3266,8 @@ _MAILCONTENT.fields_by_name['attachment_list'].message_type = _MAILCONTENT_ATTAC
 _MAILCONTENT_MAILSHOWPRIORITY.containing_type = _MAILCONTENT
 _GMSENDMAILREQ.fields_by_name['mail_content'].message_type = _MAILCONTENT
 _GMQUERYUNSENDMAILRSP.fields_by_name['mail_contents'].message_type = _MAILCONTENT
+_GMCHECKVALIDMAILRSP_MAILCONTENT.containing_type = _GMCHECKVALIDMAILRSP
+_GMCHECKVALIDMAILRSP.fields_by_name['mail_content'].message_type = _GMCHECKVALIDMAILRSP_MAILCONTENT
 DESCRIPTOR.message_types_by_name['GMCheckSessionReq'] = _GMCHECKSESSIONREQ
 DESCRIPTOR.message_types_by_name['GMCheckSessionRsp'] = _GMCHECKSESSIONRSP
 DESCRIPTOR.message_types_by_name['GMLoginReq'] = _GMLOGINREQ
@@ -3106,6 +3318,10 @@ DESCRIPTOR.message_types_by_name['GMQueryUnsendMailReq'] = _GMQUERYUNSENDMAILREQ
 DESCRIPTOR.message_types_by_name['GMQueryUnsendMailRsp'] = _GMQUERYUNSENDMAILRSP
 DESCRIPTOR.message_types_by_name['GMDeleteUnsendMailReq'] = _GMDELETEUNSENDMAILREQ
 DESCRIPTOR.message_types_by_name['GMDeleteUnsendMailRsp'] = _GMDELETEUNSENDMAILRSP
+DESCRIPTOR.message_types_by_name['GMDeleteSendMailReq'] = _GMDELETESENDMAILREQ
+DESCRIPTOR.message_types_by_name['GMDeleteSendMailRsp'] = _GMDELETESENDMAILRSP
+DESCRIPTOR.message_types_by_name['GMCheckValidMailReq'] = _GMCHECKVALIDMAILREQ
+DESCRIPTOR.message_types_by_name['GMCheckValidMailRsp'] = _GMCHECKVALIDMAILRSP
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 GMCheckSessionReq = _reflection.GeneratedProtocolMessageType('GMCheckSessionReq', (_message.Message,), dict(
@@ -3561,6 +3777,42 @@ GMDeleteUnsendMailRsp = _reflection.GeneratedProtocolMessageType('GMDeleteUnsend
   # @@protoc_insertion_point(class_scope:gms.GMDeleteUnsendMailRsp)
   ))
 _sym_db.RegisterMessage(GMDeleteUnsendMailRsp)
+
+GMDeleteSendMailReq = _reflection.GeneratedProtocolMessageType('GMDeleteSendMailReq', (_message.Message,), dict(
+  DESCRIPTOR = _GMDELETESENDMAILREQ,
+  __module__ = 'gm_pb2'
+  # @@protoc_insertion_point(class_scope:gms.GMDeleteSendMailReq)
+  ))
+_sym_db.RegisterMessage(GMDeleteSendMailReq)
+
+GMDeleteSendMailRsp = _reflection.GeneratedProtocolMessageType('GMDeleteSendMailRsp', (_message.Message,), dict(
+  DESCRIPTOR = _GMDELETESENDMAILRSP,
+  __module__ = 'gm_pb2'
+  # @@protoc_insertion_point(class_scope:gms.GMDeleteSendMailRsp)
+  ))
+_sym_db.RegisterMessage(GMDeleteSendMailRsp)
+
+GMCheckValidMailReq = _reflection.GeneratedProtocolMessageType('GMCheckValidMailReq', (_message.Message,), dict(
+  DESCRIPTOR = _GMCHECKVALIDMAILREQ,
+  __module__ = 'gm_pb2'
+  # @@protoc_insertion_point(class_scope:gms.GMCheckValidMailReq)
+  ))
+_sym_db.RegisterMessage(GMCheckValidMailReq)
+
+GMCheckValidMailRsp = _reflection.GeneratedProtocolMessageType('GMCheckValidMailRsp', (_message.Message,), dict(
+
+  MailContent = _reflection.GeneratedProtocolMessageType('MailContent', (_message.Message,), dict(
+    DESCRIPTOR = _GMCHECKVALIDMAILRSP_MAILCONTENT,
+    __module__ = 'gm_pb2'
+    # @@protoc_insertion_point(class_scope:gms.GMCheckValidMailRsp.MailContent)
+    ))
+  ,
+  DESCRIPTOR = _GMCHECKVALIDMAILRSP,
+  __module__ = 'gm_pb2'
+  # @@protoc_insertion_point(class_scope:gms.GMCheckValidMailRsp)
+  ))
+_sym_db.RegisterMessage(GMCheckValidMailRsp)
+_sym_db.RegisterMessage(GMCheckValidMailRsp.MailContent)
 
 
 # @@protoc_insertion_point(module_scope)

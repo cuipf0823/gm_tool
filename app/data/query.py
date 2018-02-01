@@ -190,7 +190,8 @@ def send_mail(user, mail_info):
     mail.gm_uid = Interact.gid
     mail.addressee_type = mail_info.get('receive_type')
     if mail.addressee_type == 1:
-        mail.online_ids = mail_info.get('receive_onlines', [])
+        for online_id in mail_info.get('receive_onlines', []):
+            mail.online_ids.append(online_id)
     elif mail.addressee_type == 2:
         mail.online_ids.append(mail_info.get("receive_online", 0))
         for uid in mail_info.get('receive_uids', []):
@@ -229,6 +230,19 @@ def del_unsend_mail(user, mail_id):
     return header, req
 
 
+def get_vaild_mail(user):
+    req = gm_pb2.GMCheckValidMailReq()
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
+    return header, req
+
+
+def del_send_mail(user, mail_id):
+    req = gm_pb2.GMDeleteSendMailReq()
+    header = Interact.make_header(req.DESCRIPTOR.full_name, user.gateway_session)
+    req.mail_ids.append(mail_id)
+    return header, req
+
+
 #########################
 def handle_list_server(rsp):
     servers = []
@@ -242,7 +256,7 @@ def handle_list_server(rsp):
 
 def handle_online_server(rsp):
     servers = []
-    if  str(rsp):
+    if str(rsp):
         for item in rsp.servers:
             servers.append(item.server_id)
     logging.debug('handle_online_server update servers: {}'.format(servers))
@@ -290,7 +304,9 @@ class Operations:
     OPT_ROOM_INFO = 'room_info'
     OPT_SEND_MAIL = 'send_mail'
     OPT_UNSEND_MAIL = 'unsend_mail'
+    OPT_VALID_MAIL = 'vaild_mail'
     OPT_DEL_UNSEND_MAIL = 'del_unsend_mail'
+    OPT_DEL_SEND_MAIL = 'del_send_mail'
 
     operations_desc = OrderedDict()
     operations_rsps = OrderedDict()
@@ -312,7 +328,9 @@ class Operations:
     operations_desc[OPT_ROOM_INFO] = ('查询房间信息', room_info, CallBackType.PARAM_ROOM_INFO)
     operations_desc[OPT_SEND_MAIL] = ('发送官方邮件', send_mail, CallBackType.PARAM_MAIL)
     operations_desc[OPT_UNSEND_MAIL] = ('获取未发送邮件', unsend_mail, CallBackType.PARAM_NONE)
+    operations_desc[OPT_VALID_MAIL] = ('获取全部有效邮件', get_vaild_mail, CallBackType.PARAM_NONE)
     operations_desc[OPT_DEL_UNSEND_MAIL] = ('删除未发送邮件', del_unsend_mail, CallBackType.PARAM_MAIL_ID)
+    operations_desc[OPT_DEL_SEND_MAIL] = ('删除已发送邮件', del_send_mail, CallBackType.PARAM_MAIL_ID)
 
     operations_rsps[OPT_LIST_SERVER] = handle_list_server
     operations_rsps[OPT_ONLINES_SERVER] = handle_online_server

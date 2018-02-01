@@ -22,9 +22,9 @@ def init_valid_time():
     return 15 * 24
 
 
-def init_time(days=15):
+def init_time(**kwargs):
     now = datetime.datetime.now()
-    delta = datetime.timedelta(days=days)
+    delta = datetime.timedelta(**kwargs)
     valid_time = now + delta
     return valid_time
 
@@ -103,7 +103,7 @@ def query_param_mail(opt):
         return render_template('index.html', operations=query_operators(), form=form, response=str(ret.response))
     form.sender.data = DEFAULT_MAIL_SENDER
     form.valid_time.data = init_valid_time()
-    form.delayed_time.data = init_time(days=0)
+    form.delayed_time.data = init_time(minutes=10)
     form.mail_receiver.data.setdefault('receiver_type', 1)
     return render_template('index.html', operations=query_operators(), form=form)
 

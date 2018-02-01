@@ -24,7 +24,7 @@ class PlayerForm(FlaskForm):
 
 
 class DelMailForm(FlaskForm):
-    mail_id = IntegerField('Delete unsend mail id:', validators=[DataRequired(message='mail id only includes numbers.')])
+    mail_id = IntegerField('Delete mail id:', validators=[DataRequired(message='mail id only includes numbers.')])
     submit = SubmitField('Submit')
 
 
@@ -49,7 +49,7 @@ class ServerForm(FlaskForm):
 
 
 class MailReceiverForm(FlaskForm):
-    receiver_type = RadioField(label='指定收件人类型', coerce=int, default=0)
+    receiver_type = RadioField(label='指定收件人类型', coerce=int, default=2)
     description = '注：1.全服发送，无需填写； 2. 指定服发送,格式如:online_id,online_id; ' \
                   '3. 指定用户发送, 格式如：online_id:uid,uid'
     receive_info = StringField('收件人信息：', validators=[Regexp('[0-9,:]*$', 0,

@@ -2,11 +2,13 @@
 # coding=utf-8
 
 from flask import Flask
+from flask import session
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_login import LoginManager
 from config import config
 from flask_wtf import CSRFProtect
+from datetime import timedelta
 import sys
 import logging
 import os
@@ -19,6 +21,7 @@ csrf = CSRFProtect()
 login_manager.session_protection = 'strong'
 # 设置登录页面的端点
 login_manager.login_view = 'auth.login'
+# login_manager.COOKIE_DURATION = timedelta(seconds=60)
 gm_server_ip = None
 gm_server_port = 0
 
@@ -26,6 +29,7 @@ gm_server_port = 0
 def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
+    app.permanent_session_lifetime = timedelta(minutes=10)
     config[config_name].init_app(app)
 
     # 初始化

@@ -7,25 +7,30 @@ from . import auth
 from ..models import login_gm, UserManager, is_already_login
 from .forms import LoginForm
 import logging
+import datetime
 
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
+        # 如果已经登录过,先做清理, 保证和gm server的连接有效
         if is_already_login(form.username.data, form.password.data):
-            login_user(UserManager.get_user_by_name(form.username.data))
-            logging.debug('the connection of user {} to gm server already exits'.format(form.username.data))
+            current_user.connect_gm.close()
+            UserManager.remove(current_user.id)
+            logging.debug('the connection of user {} to gm server already exits remove it current user id {}'.format(
+                form.username.data, current_user.id))
+
+        # 重新登录
+        status_code, ret = login_gm(form.username.data, form.password.data)
+        if not status_code:
+            UserManager.append(ret)
+            login_user(ret)
+            UserManager.print_users()
             return redirect(request.args.get('next') or url_for('main.index'))
         else:
-            status_code, ret = login_gm(form.username.data, form.password.data)
-            if not status_code:
-                UserManager.append(ret)
-                login_user(ret)
-                UserManager.print_users()
-                return redirect(request.args.get('next') or url_for('main.index'))
-            else:
-                flash('login gm server failed {0}:{1}'.format(status_code, ret), 'error')
+            flash('login gm server failed {0}:{1}'.format(status_code, ret), 'error')
+
     return render_template('auth/login.html', form=form)
 
 
